@@ -14,16 +14,34 @@ function sleep(second) {
 
 async function syncLoop() {
 
-	users.data.forEach(async (user, index) => {
+	for (const user of users.data) {
+		const index = users.data.indexOf(user);
 
 		const {name_sei, name_mei, name_sei_kana, name_mei_kana} = user;
 		await sleep(index);
-		console.log("🐳", name_sei, name_mei, name_sei_kana, name_mei_kana)
+		console.log("🐳", name_sei, name_mei, name_sei_kana, name_mei_kana);
+
+		const requestData = {
+			"user_in_facility": {
+				...param.data.user_in_facility,
+				name_sei,
+				name_mei,
+				name_sei_kana,
+				name_mei_kana
+			},
+			"user_in_facility_shisetsunyusho": {
+				...param.data.user_in_facility_shisetsunyusho
+			}
+		};
+		// console.log("🐸", requestData)
+
+		const path = "http://localhost/v202104/mgr/facility/users/new";
+		const header = `Content-Type: application/json, X-Requested-With: XMLHttpRequest, Authorization: `;
+		const requestCommand = `curl -X POST ${path} -H ${header} -d ${requestData}`
+
 		// const request = execSync('curl ' + path).toString();
 		// console.log(result);
-	})
-
-	console.log("終了！！")
+	}
 }
 
 // 実行
@@ -32,4 +50,6 @@ async function syncLoop() {
 (async ()=>{
 	console.log("同期的に呼び出す")
 	await syncLoop()
-}).call();
+})().then(
+	console.log("終了！！")
+);
