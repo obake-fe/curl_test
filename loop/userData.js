@@ -13,10 +13,22 @@ module.exports.users = {
 			"name_mei_kana": "スチュワート"
 		},
 		{
+			"name_sei": "東浜",
+			"name_mei": "巨",
+			"name_sei_kana": "ヒガシハマ",
+			"name_mei_kana": "ナオ"
+		},
+		{
 			"name_sei": "大竹",
 			"name_mei": "耕太郎",
 			"name_sei_kana": "オオタケ",
 			"name_mei_kana": "コウタロウ"
+		},
+		{
+			"name_sei": "甲斐野",
+			"name_mei": "央",
+			"name_sei_kana": "カイノ",
+			"name_mei_kana": "ヒロシ"
 		},
 	]
 }
