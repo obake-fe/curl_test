@@ -2,6 +2,9 @@
   "name": "curl_test",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "js-loop-start": "node loop/index.js"
+  },
   "repository": "git@github-obake-fe:obake-fe/curl_test.git",
   "author": "obake-fe <daichismash@gmail.com>",
   "license": "MIT",
