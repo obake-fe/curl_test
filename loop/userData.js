@@ -30,5 +30,11 @@ module.exports.users = {
 			"name_sei_kana": "カイノ",
 			"name_mei_kana": "ヒロシ"
 		},
+		{
+			"name_sei": "和田",
+			"name_mei": "毅",
+			"name_sei_kana": "ワダ",
+			"name_mei_kana": "ツヨシ"
+		},
 	]
 }

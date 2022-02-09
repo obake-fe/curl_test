@@ -1,10 +1,11 @@
 const { execSync } = require('child_process');
 const { param } = require('./param')
 const { users } = require('./userData');
+require('dotenv').config();
 
 // 引数に指定した秒数だけ待つsleep関数
 // Promiseを返す
-function sleep(second) {
+const sleep = (second) => {
 	return new Promise(resolve => {
 		setTimeout(() => {
 			resolve()
@@ -12,7 +13,7 @@ function sleep(second) {
 	})
 }
 
-async function syncLoop() {
+const syncLoop = async () => {
 
 	for (const user of users.data) {
 		const index = users.data.indexOf(user);
@@ -37,7 +38,7 @@ async function syncLoop() {
 		});
 
 		const path = "http://localhost/v202104/mgr/facility/users/new";
-		const auth = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3YxXC9tZ3JcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ0NDIxNzIwLCJleHAiOjE2NDQ0Mzk3MjAsIm5iZiI6MTY0NDQyMTcyMCwianRpIjoiSU5QMWFsSUlDSlU4Y0pFciIsInN1YiI6Mzg2MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.m3RxEFbMQQeUb6sSDQk1LrxcM9v3nxtmSqN1eVcF8nU"
+		const auth = process.env.AUTH_VALUE;
 		const contentType = "Content-Type: application/json";
 		const xRequestWith = "X-Requested-With: XMLHttpRequest";
 		const authorization = `Authorization: ${auth}`;
